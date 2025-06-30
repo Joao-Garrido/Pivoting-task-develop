@@ -22,7 +22,7 @@ class MujocoUtilsCartesian():
 
     
     def load_model_mujoco(self, path_to_model):
-        self.model = mj.MjModel.from_xml_path(path_to_model)  # mujoco_panda/models/franka_panda_no_gripper"
+        self.model = mj.MjModel.from_xml_path(str(path_to_model))
         self.data = mj.MjData(self.model)
 
         if self.render:

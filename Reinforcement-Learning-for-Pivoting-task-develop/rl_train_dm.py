@@ -49,7 +49,11 @@ def learner(name_model, log_folder, transfer_learning_folder, max_timesteps, pol
     # states = ['fx', 'fy', 'fz', 'tx', 'ty', 'tz', 'd_ee_obj_x', 'd_ee_obj_y', 'd_ee_obj_z', 'd_ee_tgt_x', 'd_ee_tgt_y', 'd_ee_tgt_z']
     states = ['d_ee_obj_x', 'd_ee_obj_y', 'd_ee_obj_z', 'd_ee_tgt_x', 'd_ee_tgt_y', 'd_ee_tgt_z']
     actions = ['x', 'y', 'z']#, 'rx', 'ry', 'rz']
-    path_model = name_model + '.xml'
+
+    script_dir = Path(__file__).parent.resolve()
+    xml_filename = Path(name_model).name + '.xml'
+    path_model = script_dir / 'envs' / 'pivoting_v2' / 'assets' / xml_filename
+    
     # if env == 'repositioning':
     env = PivotingEnv(actions=actions, states=states, path_to_model=path_model, show_sim=render)    
     # else:
